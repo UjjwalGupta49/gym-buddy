@@ -1,0 +1,11 @@
+{
+    "targetGroups": [
+      "BICEP",
+      "TRICEP",
+      "SHOULDER",
+      "CHEST",
+      "BACK",
+      "LEG",
+      "CORE"
+    ]
+  }
