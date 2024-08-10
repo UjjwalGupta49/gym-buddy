@@ -1,5 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-import mongoose, { Schema, Document, model, models } from 'mongoose';
+import type { NextApiRequest, NextApiResponse } from "next";
+import mongoose, { Schema, Document, model, models } from "mongoose";
 
 interface IExercise extends Document {
   Name: string;
@@ -31,7 +31,8 @@ const exerciseSchema = new Schema<IExercise>({
 });
 
 // Use existing model if available, otherwise create a new one
-const Exercise = models.Exercise || model<IExercise>('Exercise', exerciseSchema, 'gymbuddy');
+const Exercise =
+  models.Exercise || model<IExercise>("Exercise", exerciseSchema, "gymbuddy");
 
 async function connectToDatabase() {
   if (mongoose.connection.readyState >= 1) {
@@ -39,27 +40,23 @@ async function connectToDatabase() {
   }
   try {
     await mongoose.connect(
-      'mongodb+srv://navalbihani15:Ab4hM7uHrMxRNFyG@cluster0.fzkiqho.mongodb.net/gymbuddy?retryWrites=true&w=majority&appName=Cluster0',
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
+      "mongodb+srv://navalbihani15:Ab4hM7uHrMxRNFyG@cluster0.fzkiqho.mongodb.net/gymbuddy?retryWrites=true&w=majority&appName=Cluster0"
     );
   } catch (error) {
-    console.error('Database connection error:', error);
-    throw new Error('Could not connect to the database');
+    console.error("Database connection error:", error);
+    throw new Error("Could not connect to the database");
   }
 }
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<IExercise[] | { message: string }>,
+  res: NextApiResponse<IExercise[] | { message: string }>
 ) {
   try {
     await connectToDatabase();
 
-    // Use lean() for performance, returns plain JavaScript objects instead of Mongoose documents
-    const exercises = await Exercise.find({}).lean();
+    // Explicitly type the result of the find().lean() operation
+    const exercises = await Exercise.find({}).lean<IExercise[]>();
 
     res.status(200).json(exercises);
   } catch (error) {
