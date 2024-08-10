@@ -10,14 +10,29 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        blossomPink: '#FFC0CB',
-        lightGreen: '#90EE90',
-        skyBlue: '#87CEEB',
-        creamWhite: '#FFFDD0',
-        earthBrown: '#A0522D',
+        royalBlue: '#2120F8',
+        azureBlue: '#0D75EE',
+        skyBlue: '#0795E8',
+        softWhite: '#FAFAFA',
+        midnightBlack: '#030407',
+        sunshineYellow: '#E7DE13',
+        peachBeige: '#F8D2A3',
+        coralRed: '#E0554F',
       },
     },
   },
   // darkMode: 'class',
-  plugins: [nextui()],
+  plugins: [nextui({
+    themes:{
+      light: {
+        colors:{
+          danger: {
+            DEFAULT: "#E0554F",
+          },
+          focus: "#E0554F"
+        }
+      }
+    }
+  })],
+  
 };
