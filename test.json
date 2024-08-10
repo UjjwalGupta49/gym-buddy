@@ -1,0 +1,588 @@
+
+{
+  "BicepCurl": {
+    "Name": "Bicep Curl",
+    "TargetGroup": ["BICEP", "TRICEP"],
+    "GIF": "gif",
+    "Description": "bhai dolle ban jaigai",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "HammerCurl": {
+    "Name": "Hammer Curl",
+    "TargetGroup": ["BICEP", "FOREARM"],
+    "GIF": "gif",
+    "Description": "for a balanced arm look",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "ConcentrationCurl": {
+    "Name": "Concentration Curl",
+    "TargetGroup": ["BICEP"],
+    "GIF": "gif",
+    "Description": "isolates the biceps for a peak contraction",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 10,
+        "Max": 15
+      }
+    }
+  },
+  "PreacherCurl": {
+    "Name": "Preacher Curl",
+    "TargetGroup": ["BICEP"],
+    "GIF": "gif",
+    "Description": "focuses on the lower part of the biceps",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "InclineDumbbellCurl": {
+    "Name": "Incline Dumbbell Curl",
+    "TargetGroup": ["BICEP"],
+    "GIF": "gif",
+    "Description": "stretches the biceps for a deeper contraction",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "BarbellCurl": {
+    "Name": "Barbell Curl",
+    "TargetGroup": ["BICEP"],
+    "GIF": "gif",
+    "Description": "classic exercise for overall bicep development",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "CableCurl": {
+    "Name": "Cable Curl",
+    "TargetGroup": ["BICEP"],
+    "GIF": "gif",
+    "Description": "constant tension throughout the movement",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 10,
+        "Max": 15
+      }
+    }
+  },
+  "ZottmanCurl": {
+    "Name": "Zottman Curl",
+    "TargetGroup": ["BICEP", "FOREARM"],
+    "GIF": "gif",
+    "Description": "combines curling with a reverse curl to target both biceps and forearms",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "ResistanceBandCurl": {
+    "Name": "Resistance Band Curl",
+    "TargetGroup": ["BICEP"],
+    "GIF": "gif",
+    "Description": "great for a high-intensity workout with minimal equipment",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 10,
+        "Max": 15
+      }
+    }
+  },
+  "TricepDips": {
+    "Name": "Tricep Dips",
+    "TargetGroup": ["TRICEP"],
+    "GIF": "gif",
+    "Description": "effective bodyweight exercise for triceps",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "SkullCrushers": {
+    "Name": "Skull Crushers",
+    "TargetGroup": ["TRICEP"],
+    "GIF": "gif",
+    "Description": "isolates the triceps for maximum growth",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "TricepPushdown": {
+    "Name": "Tricep Pushdown",
+    "TargetGroup": ["TRICEP"],
+    "GIF": "gif",
+    "Description": "targets the triceps with cable resistance",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 10,
+        "Max": 15
+      }
+    }
+  },
+  "OverheadTricepExtension": {
+    "Name": "Overhead Tricep Extension",
+    "TargetGroup": ["TRICEP"],
+    "GIF": "gif",
+    "Description": "stretches and works the triceps from a different angle",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "DumbbellKickback": {
+    "Name": "Dumbbell Kickback",
+    "TargetGroup": ["TRICEP"],
+    "GIF": "gif",
+    "Description": "focuses on the tricep's long head",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 10,
+        "Max": 15
+      }
+    }
+  },
+  "TricepBenchPress": {
+    "Name": "Tricep Bench Press",
+    "TargetGroup": ["TRICEP", "CHEST"],
+    "GIF": "gif",
+    "Description": "bench press variation targeting triceps",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "CloseGripBenchPress": {
+    "Name": "Close Grip Bench Press",
+    "TargetGroup": ["TRICEP", "CHEST"],
+    "GIF": "gif",
+    "Description": "focuses on the triceps by narrowing the grip",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "SingleArmTricepExtension": {
+    "Name": "Single Arm Tricep Extension",
+    "TargetGroup": ["TRICEP"],
+    "GIF": "gif",
+    "Description": "isolates each tricep individually for balanced growth",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 10,
+        "Max": 15
+      }
+    }
+  },
+  "BenchPress": {
+    "Name": "Bench Press",
+    "TargetGroup": ["CHEST", "TRICEP", "SHOULDER"],
+    "GIF": "gif",
+    "Description": "seena chora hoga",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "InclineBenchPress": {
+    "Name": "Incline Bench Press",
+    "TargetGroup": ["CHEST", "SHOULDER", "TRICEP"],
+    "GIF": "gif",
+    "Description": "targets the upper chest",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "ChestFly": {
+    "Name": "Chest Fly",
+    "TargetGroup": ["CHEST"],
+    "GIF": "gif",
+    "Description": "stretches and contracts the chest muscles",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 10,
+        "Max": 15
+      }
+    }
+  },
+  "DumbbellPullover": {
+    "Name": "Dumbbell Pullover",
+    "TargetGroup": ["CHEST", "BACK"],
+    "GIF": "gif",
+    "Description": "works the chest and back muscles simultaneously",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "PushUp": {
+    "Name": "Push Up",
+    "TargetGroup": ["CHEST", "TRICEP", "SHOULDER"],
+    "GIF": "gif",
+    "Description": "basic bodyweight exercise for chest and triceps",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 10,
+        "Max": 15
+      }
+    }
+  },
+  "CableCrossOver": {
+    "Name": "Cable Cross Over",
+    "TargetGroup": ["CHEST"],
+    "GIF": "gif",
+    "Description": "isolates the chest muscles with cable resistance",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 10,
+        "Max": 15
+      }
+    }
+  },
+  "DeclineBenchPress": {
+    "Name": "Decline Bench Press",
+    "TargetGroup": ["CHEST", "TRICEP"],
+    "GIF": "gif",
+    "Description": "focuses on the lower chest",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "ChestDips": {
+    "Name": "Chest Dips",
+    "TargetGroup": ["CHEST", "TRICEP"],
+    "GIF": "gif",
+    "Description": "leans forward to target the chest",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "Deadlift": {
+    "Name": "Deadlift",
+    "TargetGroup": ["BACK", "GLUTES", "HAMSTRINGS"],
+    "GIF": "gif",
+    "Description": "full body workout",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 5,
+        "Max": 8
+      }
+    }
+  },
+  "PullUp": {
+    "Name": "Pull Up",
+    "TargetGroup": ["BACK", "BICEP", "SHOULDER"],
+    "GIF": "gif",
+    "Description": "upar kheencho full power",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 6,
+        "Max": 10
+      }
+    }
+  },
+  "BentOverRow": {
+    "Name": "Bent Over Row",
+    "TargetGroup": ["BACK"],
+    "GIF": "gif",
+    "Description": "targets the middle back",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "LatPulldown": {
+    "Name": "Lat Pulldown",
+    "TargetGroup": ["BACK"],
+    "GIF": "gif",
+    "Description": "works the latissimus dorsi",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 10,
+        "Max": 15
+      }
+    }
+  },
+  "TBarRow": {
+    "Name": "T-Bar Row",
+    "TargetGroup": ["BACK"],
+    "GIF": "gif",
+    "Description": "emphasizes the middle of the back",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "SingleArmRow": {
+    "Name": "Single Arm Row",
+    "TargetGroup": ["BACK"],
+    "GIF": "gif",
+    "Description": "isolates each side of the back",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 10,
+        "Max": 15
+      }
+    }
+  },
+  "FacePull": {
+    "Name": "Face Pull",
+    "TargetGroup": ["BACK", "SHOULDER"],
+    "GIF": "gif",
+    "Description": "works the rear delts and upper back",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 12,
+        "Max": 15
+      }
+    }
+  },
+  "SeatedCableRow": {
+    "Name": "Seated Cable Row",
+    "TargetGroup": ["BACK"],
+    "GIF": "gif",
+    "Description": "targets the entire back with cable resistance",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "Lunges": {
+    "Name": "Lunges",
+    "TargetGroup": ["QUADRICEPS", "GLUTES", "HAMSTRINGS"],
+    "GIF": "gif",
+    "Description": "one leg one step",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 10,
+        "Max": 12
+      }
+    }
+  },
+  "Squats": {
+    "Name": "Squats",
+    "TargetGroup": ["QUADRICEPS", "GLUTES", "HAMSTRINGS"],
+    "GIF": "gif",
+    "Description": "fundamental leg exercise for strength and size",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "LegPress": {
+    "Name": "Leg Press",
+    "TargetGroup": ["QUADRICEPS", "GLUTES", "HAMSTRINGS"],
+    "GIF": "gif",
+    "Description": "targets the legs with machine resistance",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 10,
+        "Max": 15
+      }
+    }
+  },
+  "LegExtension": {
+    "Name": "Leg Extension",
+    "TargetGroup": ["QUADRICEPS"],
+    "GIF": "gif",
+    "Description": "isolates the quadriceps",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 12,
+        "Max": 15
+      }
+    }
+  },
+  "LegCurl": {
+    "Name": "Leg Curl",
+    "TargetGroup": ["HAMSTRINGS"],
+    "GIF": "gif",
+    "Description": "isolates the hamstrings",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 12,
+        "Max": 15
+      }
+    }
+  },
+  "CalfRaise": {
+    "Name": "Calf Raise",
+    "TargetGroup": ["CALVES"],
+    "GIF": "gif",
+    "Description": "targets the calf muscles",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 15,
+        "Max": 20
+      }
+    }
+  },
+  "BulgarianSplitSquat": {
+    "Name": "Bulgarian Split Squat",
+    "TargetGroup": ["QUADRICEPS", "GLUTES", "HAMSTRINGS"],
+    "GIF": "gif",
+    "Description": "single-leg exercise focusing on strength and balance",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "GobletSquat": {
+    "Name": "Goblet Squat",
+    "TargetGroup": ["QUADRICEPS", "GLUTES", "HAMSTRINGS"],
+    "GIF": "gif",
+    "Description": "squat variation with a dumbbell",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 10,
+        "Max": 15
+      }
+    }
+  },
+  "RomanianDeadlift": {
+    "Name": "Romanian Deadlift",
+    "TargetGroup": ["HAMSTRINGS", "GLUTES"],
+    "GIF": "gif",
+    "Description": "focuses on the hamstrings and glutes",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 8,
+        "Max": 12
+      }
+    }
+  },
+  "HipThrust": {
+    "Name": "Hip Thrust",
+    "TargetGroup": ["GLUTES"],
+    "GIF": "gif",
+    "Description": "targets the glutes with maximum contraction",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 10,
+        "Max": 15
+      }
+    }
+  },
+  "GluteBridge": {
+    "Name": "Glute Bridge",
+    "TargetGroup": ["GLUTES"],
+    "GIF": "gif",
+    "Description": "works the glutes and lower back",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 12,
+        "Max": 15
+      }
+    }
+  },
+  "DonkeyKick": {
+    "Name": "Donkey Kick",
+    "TargetGroup": ["GLUTES"],
+    "GIF": "gif",
+    "Description": "isolates the glute muscles",
+    "SetReps": {
+      "Sets": 3,
+      "Reps": {
+        "Min": 12,
+        "Max": 15
+      }
+    }
+  }
+}
