@@ -29,6 +29,9 @@ module.exports = {
           danger: {
             DEFAULT: "#E0554F",
           },
+          // warning: {
+          //   DEFAULT: "#0795E8"
+          // },
           focus: "#E0554F"
         }
       }

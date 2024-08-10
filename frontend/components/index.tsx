@@ -1,3 +1,4 @@
 import Hero from "./Hero";
+import WorkoutView from "./workout/WorkoutView";
 
-export {Hero};
+export {Hero, WorkoutView};
