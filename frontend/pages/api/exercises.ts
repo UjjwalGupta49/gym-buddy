@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document, model, models } from 'mongoose';
 
 interface IExercise extends Document {
   Name: string;
@@ -28,18 +28,27 @@ const exerciseSchema = new Schema<IExercise>({
       Max: { type: Number, required: true },
     },
   },
-}, { strict: false });
+});
 
-// Check if the model already exists to avoid recompiling it
-const Exercise = mongoose.models.Exercise || mongoose.model<IExercise>('Exercise', exerciseSchema, 'gymbuddy');
+// Use existing model if available, otherwise create a new one
+const Exercise = models.Exercise || model<IExercise>('Exercise', exerciseSchema, 'gymbuddy');
 
 async function connectToDatabase() {
   if (mongoose.connection.readyState >= 1) {
     return; // Already connected
   }
-  return mongoose.connect('mongodb+srv://navalbihani15:Ab4hM7uHrMxRNFyG@cluster0.fzkiqho.mongodb.net/gymbuddy?retryWrites=true&w=majority&appName=Cluster0'
-
-  );
+  try {
+    await mongoose.connect(
+      'mongodb+srv://navalbihani15:Ab4hM7uHrMxRNFyG@cluster0.fzkiqho.mongodb.net/gymbuddy?retryWrites=true&w=majority&appName=Cluster0',
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    );
+  } catch (error) {
+    console.error('Database connection error:', error);
+    throw new Error('Could not connect to the database');
+  }
 }
 
 export default async function handler(
@@ -49,8 +58,10 @@ export default async function handler(
   try {
     await connectToDatabase();
 
-    const data = await Exercise.find({});
-    res.status(200).json(data);
+    // Use lean() for performance, returns plain JavaScript objects instead of Mongoose documents
+    const exercises = await Exercise.find({}).lean();
+
+    res.status(200).json(exercises);
   } catch (error) {
     res.status(500).json({ message: (error as Error).message });
   }
