@@ -1,0 +1,16 @@
+{
+    "targetGroups": [
+      "BICEP",
+      "TRICEP",
+      "SHOULDER",
+      "CHEST",
+      "BACK",
+      "LEG",
+      "CORE",
+      "GLUTES",
+      "HAMSTRINGS",
+      "QUADRICEPS",
+      "FOREARM",
+      "CALVES"
+    ]
+  }
