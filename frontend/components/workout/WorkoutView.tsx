@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardBody, Chip } from "@nextui-org/react";
 import { useGlobalState } from "@/context/GlobalStateProvider";
-import { motion, AnimatePresence} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { MdKeyboardDoubleArrowDown } from "react-icons/md";
+import WorkoutCard from "./WorkoutCard"; // Import the WorkoutCard component
 
 // Chip keys for global state management
 const CHIP_KEYS = {
@@ -17,7 +18,7 @@ const CHIP_KEYS = {
   ABS: "ABS",
   LOWERBACK: "LOWERBACK",
 };
-// TODO: update based on schema from mongo db
+
 const chipsData = [
   { label: "Biceps", key: CHIP_KEYS.BICEPS },
   { label: "Forearms", key: CHIP_KEYS.FOREARMS },
@@ -31,25 +32,24 @@ const chipsData = [
   { label: "Lower Back", key: CHIP_KEYS.LOWERBACK },
 ];
 
-// Reusable component to display Chips
-// Updated ChipList component to handle showing the first 6 chips and the rest on dropdown
-// Updated ChipList component to handle showing the first 6 chips and the rest on dropdown
-const ChipList: React.FC<{ isDropdownOpen: boolean }> = ({ isDropdownOpen }) => {
-    const { items, setItems } = useGlobalState();
-  
-    const handleChipClick = (chipKey: string) => {
-      if (items.includes(chipKey)) {
-        setItems(items.filter((item) => item !== chipKey));
-      } else {
-        setItems([...items, chipKey]);
-      }
-      console.log(items);
-    };
-  
+const ChipList: React.FC<{ isDropdownOpen: boolean }> = ({
+  isDropdownOpen,
+}) => {
+  const { items, setItems } = useGlobalState();
+
+  const handleChipClick = (chipKey: string) => {
+    if (items.includes(chipKey)) {
+      setItems(items.filter((item) => item !== chipKey));
+    } else {
+      setItems([...items, chipKey]);
+    }
+    console.log(items);
+  };
+
   // Always show the first 6 chips
   const visibleChips = chipsData.slice(0, 6);
   // Show all chips when dropdown is open
-  const additionalChips = chipsData.slice(6);  
+  const additionalChips = chipsData.slice(6);
 
   return (
     <>
@@ -80,7 +80,8 @@ const ChipList: React.FC<{ isDropdownOpen: boolean }> = ({ isDropdownOpen }) => 
               <Chip
                 key={chip.key}
                 variant={items.includes(chip.key) ? "solid" : "bordered"}
-                color={items.includes(chip.key) ? "warning" : "default"}
+                color="warning"
+                radius="full"
                 onClick={() => handleChipClick(chip.key)}
               >
                 {chip.label}
@@ -91,57 +92,135 @@ const ChipList: React.FC<{ isDropdownOpen: boolean }> = ({ isDropdownOpen }) => 
       </AnimatePresence>
     </>
   );
-  };
+};
 
 // Mobile View Component
 const WorkoutViewMobile: React.FC = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const { items } = useGlobalState();
+  const [workouts, setWorkouts] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchWorkouts = async () => {
+      try {
+        const response = await fetch("/api/exercises");
+        const data = await response.json();
+
+        // Filter workouts based on global state
+        const filteredWorkouts = Object.values(data).filter((workout: any) =>
+          workout.TargetGroup.some((group: string) => items.includes(group))
+        );
+        // console.log("filteredWorkouts: ")
+        // console.log(data)
+
+        setWorkouts(data);
+      } catch (error) {
+        console.error("Error fetching workouts:", error);
+      }
+    };
+
+    fetchWorkouts();
+  }, [items]);
 
   return (
-    <Card className="w-full mx-auto rounded-lg p-4 bg-white shadow-lg">
-      <CardBody>
-        <div className="flex justify-between items-center">
-          <h2 className="text-lg font-semibold text-gray-800">
-            here’s your workout:
-          </h2>
-          <MdKeyboardDoubleArrowDown
-            className={`text-2xl text-gray-800 cursor-pointer transform transition-transform ${
-              isDropdownOpen ? "rotate-180" : ""
-            }`}
-            onClick={() => setDropdownOpen(!isDropdownOpen)}
+    <div>
+      <Card className="w-full mx-auto rounded-lg p-4 bg-white shadow-lg">
+        <CardBody>
+          <div className="flex justify-between items-center">
+            <h2 className="text-lg font-semibold text-gray-800">
+              here’s your workout:
+            </h2>
+            <MdKeyboardDoubleArrowDown
+              className={`text-2xl text-gray-800 cursor-pointer transform transition-transform ${
+                isDropdownOpen ? "rotate-180" : ""
+              }`}
+              onClick={() => setDropdownOpen(!isDropdownOpen)}
+            />
+          </div>
+          <div className="mt-4">
+            <ChipList isDropdownOpen={isDropdownOpen} />
+          </div>
+        </CardBody>
+      </Card>
+      <div className="mt-4 grid grid-cols-1 gap-4">
+        {workouts.map((workout) => (
+          <WorkoutCard
+            key={workout.Name}
+            workout={{
+              Name: workout.Name,
+              TargetGroup: workout.TargetGroup,
+              GIF: workout.GIF,
+              Description: workout.Description,
+              SetReps: workout.SetReps,
+            }}
           />
-        </div>
-        <div className="mt-4">
-          <ChipList isDropdownOpen={isDropdownOpen} />
-        </div>
-      </CardBody>
-    </Card>
+        ))}
+      </div>
+    </div>
   );
 };
 
 // Desktop View Component
 const WorkoutViewDesktop: React.FC = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const { items } = useGlobalState();
+  const [workouts, setWorkouts] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchWorkouts = async () => {
+      try {
+        const response = await fetch("/api/exercises");
+        const data = await response.json();
+
+        // Filter workouts based on global state
+        const filteredWorkouts = Object.values(data).filter((workout: any) =>
+          workout.TargetGroup.some((group: string) => items.includes(group))
+        );
+
+        setWorkouts(filteredWorkouts);
+      } catch (error) {
+        console.error("Error fetching workouts:", error);
+      }
+    };
+
+    fetchWorkouts();
+  }, [items]);
 
   return (
-    <Card className="w-full mx-auto rounded-lg p-4 bg-white shadow-lg">
-      <CardBody>
-        <div className="flex justify-between items-center">
-          <h2 className="text-lg font-semibold text-gray-800">
-            here’s your workout:
-          </h2>
-          <MdKeyboardDoubleArrowDown
-            className={`text-2xl text-gray-800 cursor-pointer transform transition-transform ${
-              isDropdownOpen ? "rotate-180" : ""
-            }`}
-            onClick={() => setDropdownOpen(!isDropdownOpen)}
+    <div>
+      <Card className="w-full mx-auto rounded-lg p-4 bg-white shadow-lg">
+        <CardBody>
+          <div className="flex justify-between items-center">
+            <h2 className="text-lg font-semibold text-gray-800">
+              here’s your workout:
+            </h2>
+            <MdKeyboardDoubleArrowDown
+              className={`text-2xl text-gray-800 cursor-pointer transform transition-transform ${
+                isDropdownOpen ? "rotate-180" : ""
+              }`}
+              onClick={() => setDropdownOpen(!isDropdownOpen)}
+            />
+          </div>
+          <div className="mt-4">
+            <ChipList isDropdownOpen={isDropdownOpen} />
+          </div>
+        </CardBody>
+      </Card>
+      <div className="mt-4 grid grid-cols-1 gap-4">
+        {workouts.map((workout) => (
+          <WorkoutCard
+            key={workout.Name}
+            workout={{
+              Name: workout.Name,
+              TargetGroup: workout.TargetGroup,
+              GIF: workout.GIF,
+              Description: workout.Description,
+              SetReps: workout.SetReps,
+            }}
           />
-        </div>
-        <div className="mt-4">
-          <ChipList isDropdownOpen={isDropdownOpen} />
-        </div>
-      </CardBody>
-    </Card>
+        ))}
+      </div>
+    </div>
   );
 };
 

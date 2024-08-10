@@ -37,7 +37,9 @@ async function connectToDatabase() {
   if (mongoose.connection.readyState >= 1) {
     return; // Already connected
   }
-  return mongoose.connect('mongodb+srv://navalbihani15:Ab4hM7uHrMxRNFyG@cluster0.fzkiqho.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
+  return mongoose.connect('mongodb+srv://navalbihani15:Ab4hM7uHrMxRNFyG@cluster0.fzkiqho.mongodb.net/gymbuddy?retryWrites=true&w=majority&appName=Cluster0'
+
+  );
 }
 
 export default async function handler(
@@ -48,6 +50,7 @@ export default async function handler(
     await connectToDatabase();
 
     const data = await Exercise.find({});
+    console.log(data)
     res.status(200).json(data);
   } catch (error) {
     res.status(500).json({ message: (error as Error).message });
