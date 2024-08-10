@@ -5,32 +5,73 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 import WorkoutCard from "./WorkoutCard"; // Import the WorkoutCard component
 
-// Chip keys for global state management
-const CHIP_KEYS = {
-  BICEPS: "BICEPS",
-  FOREARMS: "ARMS",
-  TRICEPS: "TRICEPS",
-  HAMSTRINGS: "HAMSTRINGS",
-  CALVES: "CALVES",
-  SHOULDERS: "SHOULDERS",
-  QUADS: "QUADS",
-  GLUTES: "GLUTES",
-  ABS: "ABS",
-  LOWERBACK: "LOWERBACK",
-};
+interface Reps {
+  Min: number;
+  Max: number;
+}
 
-const chipsData = [
-  { label: "Biceps", key: CHIP_KEYS.BICEPS },
-  { label: "Forearms", key: CHIP_KEYS.FOREARMS },
-  { label: "Triceps", key: CHIP_KEYS.TRICEPS },
-  { label: "Hamstring", key: CHIP_KEYS.HAMSTRINGS },
-  { label: "Calves", key: CHIP_KEYS.CALVES },
-  { label: "Shoulder", key: CHIP_KEYS.SHOULDERS },
-  { label: "Quads", key: CHIP_KEYS.QUADS },
-  { label: "Glutes", key: CHIP_KEYS.GLUTES },
-  { label: "Abs", key: CHIP_KEYS.ABS },
-  { label: "Lower Back", key: CHIP_KEYS.LOWERBACK },
+interface SetReps {
+  Reps: Reps;
+  Sets: number;
+}
+
+interface Workout {
+  _id: string;
+  Name: string;
+  TargetGroup: string[];
+  GIF: string;
+  Description: string;
+  SetReps: SetReps;
+}
+
+type WorkoutsResponse = Workout[];
+
+const targetGroups = [
+  "BICEP",
+  "TRICEP",
+  "SHOULDER",
+  "CHEST",
+  "BACK",
+  "CORE",
+  "GLUTES",
+  "HAMSTRINGS",
+  "QUADRICEPS",
+  "FOREARM",
+  "CALVES",
 ];
+
+// Define the keys only if they are mentioned in the targetGroups array.
+// Create a mapping of keys directly from the targetGroups
+const CHIP_KEYS = {
+    BICEP: "BICEP",
+    TRICEP: "TRICEP",
+    SHOULDER: "SHOULDER",
+    CHEST: "CHEST",
+    BACK: "BACK",
+    CORE: "CORE",
+    GLUTES: "GLUTES",
+    HAMSTRINGS: "HAMSTRINGS",
+    QUADRICEPS: "QUADRICEPS",
+    FOREARM: "FOREARM",
+    CALVES: "CALVES",
+}
+// Only include chips data for existing keys
+const chipsData = [
+    { label: "Biceps", key: CHIP_KEYS.BICEP },
+    { label: "Triceps", key: CHIP_KEYS.TRICEP },
+    { label: "Shoulders", key: CHIP_KEYS.SHOULDER },
+    { label: "Chest", key: CHIP_KEYS.CHEST },
+    { label: "Back", key: CHIP_KEYS.BACK },
+    { label: "Core", key: CHIP_KEYS.CORE },
+    { label: "Glutes", key: CHIP_KEYS.GLUTES },
+    { label: "Hamstrings", key: CHIP_KEYS.HAMSTRINGS },
+    { label: "Quadriceps", key: CHIP_KEYS.QUADRICEPS },
+    { label: "Forearms", key: CHIP_KEYS.FOREARM },
+    { label: "Calves", key: CHIP_KEYS.CALVES },
+  ];
+
+console.log(CHIP_KEYS);
+console.log(chipsData);
 
 const ChipList: React.FC<{ isDropdownOpen: boolean }> = ({
   isDropdownOpen,
@@ -43,12 +84,11 @@ const ChipList: React.FC<{ isDropdownOpen: boolean }> = ({
     } else {
       setItems([...items, chipKey]);
     }
-    console.log(items);
   };
 
   // Always show the first 6 chips
   const visibleChips = chipsData.slice(0, 6);
-  // Show all chips when dropdown is open
+  // Show additional chips when dropdown is open
   const additionalChips = chipsData.slice(6);
 
   return (
@@ -103,17 +143,59 @@ const WorkoutViewMobile: React.FC = () => {
   useEffect(() => {
     const fetchWorkouts = async () => {
       try {
+        console.log(items);
         const response = await fetch("/api/exercises");
-        const data = await response.json();
 
-        // Filter workouts based on global state
-        const filteredWorkouts = Object.values(data).filter((workout: any) =>
-          workout.TargetGroup.some((group: string) => items.includes(group))
-        );
-        // console.log("filteredWorkouts: ")
-        // console.log(data)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
-        setWorkouts(data);
+        const data: WorkoutsResponse = await response.json();
+
+        // Check if data is a valid array of workouts
+        if (!Array.isArray(data) || data.length === 0) {
+          throw new Error("Invalid data format received from the API");
+        }
+
+        // Log the data to inspect its structure
+        console.log("Raw data from API:", data);
+        console.log("Items for filtering:", items);
+
+        // Filter workouts based on the items in global state
+        const filteredWorkouts = data.filter((workout: Workout) => {
+          if (
+            !workout ||
+            typeof workout !== "object" ||
+            !Array.isArray(workout.TargetGroup)
+          ) {
+            console.error("Invalid workout structure:", workout);
+            return false;
+          }
+
+          // Log each workout's TargetGroup and check against items
+          console.log("Checking workout:", workout.Name);
+          console.log("TargetGroup:", workout.TargetGroup);
+
+          // Check if any of the items in the global state match any TargetGroup in the workout
+          const matches = workout.TargetGroup.some((group: string) =>
+            items.includes(group)
+          );
+
+          if (matches) {
+            console.log(`Workout "${workout.Name}" matches the items.`);
+          }
+
+          return matches;
+        });
+
+        // Log the filtered workouts to inspect the result
+        console.log("Filtered workouts:", filteredWorkouts);
+
+        if (!filteredWorkouts || !Array.isArray(filteredWorkouts)) {
+          throw new Error("Filtered workouts are not in the expected format.");
+        }
+
+        setWorkouts(filteredWorkouts);
       } catch (error) {
         console.error("Error fetching workouts:", error);
       }

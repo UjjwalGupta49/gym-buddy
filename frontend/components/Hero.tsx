@@ -17,9 +17,9 @@ const HeroMobile: React.FC = () => {
   const handleTabChange = (key: string | number) => {
     const selectedKey = key as string;
     const selectionMap: { [key: string]: string[] } = {
-      "back & bicep": ["BICEPS", "ARMS"],
-      "chest & tricep": ["TRICEPS", "CHEST"],
-      "legs & shoulder": ["CALVES", "HAMSTRING", "SHOULDER"],
+      "back & bicep": ["BICEP", "ARMS"],
+      "chest & tricep": ["TRICEP", "CHEST"],
+      "legs & shoulder": ["CALVES", "HAMSTRINGS", "SHOULDER"],
     };
     setItems(selectionMap[selectedKey]); // Update global state
   };
@@ -41,7 +41,7 @@ const HeroMobile: React.FC = () => {
 
       {/* Main Scene Elements */}
       <div className="relative z-10 flex flex-col items-center justify-start w-full h-auto">
-        {/* Top Section: Avatar, Product Name, and Get Started Button */}
+        {/* Top Section: Avatar, Gym Buddy, and Get Started Button */}
         <div className="flex justify-between items-center w-full px-4 mb-4">
           <div className="flex items-center">
             <Avatar
@@ -49,7 +49,7 @@ const HeroMobile: React.FC = () => {
               className="w-8 h-8 mr-2"
             />
             <h1 className="text-base font-semibold text-midnightBlack">
-              Product Name
+              Gym Buddy
             </h1>
           </div>
           <Button
@@ -66,9 +66,17 @@ const HeroMobile: React.FC = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-xl font-bold text-midnightBlack text-center mb-4"
+            className="text-xl font-bold text-midnightBlack text-center mb-0"
           >
-            Think, Plan, and Create Together
+            Daare hai
+          </motion.h2>
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-2xl font-bold text-midnightBlack text-center mb-4"
+          >
+            Gym kare hai
           </motion.h2>
         </div>
 
@@ -89,7 +97,7 @@ const HeroMobile: React.FC = () => {
           >
             <Tab key="back & bicep" title="Back & Bicep" />
             <Tab key="chest & tricep" title="Chest & Tricep" />
-            <Tab key="legs and shoulder" title="Legs & Shoulder" />
+            <Tab key="legs & shoulder" title="Legs & Shoulder" />
           </Tabs>
         </div>
       </div>
@@ -104,9 +112,9 @@ const HeroDesktop: React.FC = () => {
   const handleTabChange = (key: string | number) => {
     const selectedKey = key as string;
     const selectionMap: { [key: string]: string[] } = {
-      "back & bicep": ["BICEPS", "ARMS"],
-      "chest & tricep": ["TRICEPS", "CHEST"],
-      "legs & shoulder": ["CALVES", "HAMSTRING", "SHOULDER"],
+      "back & bicep": ["BICEP", "ARMS"],
+      "chest & tricep": ["TRICEP", "CHEST"],
+      "legs & shoulder": ["CALVES", "HAMSTRINGS", "SHOULDER"],
     };
     setItems(selectionMap[selectedKey]); // Update global state
   };
@@ -194,7 +202,7 @@ const HeroDesktop: React.FC = () => {
             className="w-10 h-10 mr-2"
           />
           <h1 className="text-lg font-semibold text-midnightBlack">
-            Product Name
+            Gym Buddy
           </h1>
         </div>
 
