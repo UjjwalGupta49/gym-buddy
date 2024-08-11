@@ -549,7 +549,7 @@
   "ABS":{
     "Name": "ABS",
     "TargetGroup":["CORE"],
-    "GIF":,
+    "GIF":"https://menspower.nl/wp-content/uploads/2018/02/crunch.gif",
     "Description": "works the rectus abdominis",
     "SetReps":{
       "Sets":3,
