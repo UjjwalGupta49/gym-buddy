@@ -1,46 +1,91 @@
 import React, { useState } from 'react';
-import { FaSyncAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { FaSyncAlt } from 'react-icons/fa';
 
-const HumanAnatomy: React.FC = () => {
-  const [showBack, setShowBack] = useState(false);
-  const [rotating, setRotating] = useState(false);
+// FlipCard component
+const FlipCard: React.FC<{ frontContent: React.ReactNode; backContent: React.ReactNode }> = ({ frontContent, backContent }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
 
-  const toggleImage = () => {
-    setRotating(true);
-    setTimeout(() => {
-      setShowBack(!showBack);
-      setRotating(false);
-    }, 300); // Matches the animation duration
+  const handleFlip = () => {
+    setIsFlipped(!isFlipped);
   };
 
   return (
-    <div 
-      className="relative h-screen flex justify-center items-center bg-gradient-to-br from-royalBlue via-azureBlue to-skyBlue"
-    >
-      <motion.img
-        src={showBack ? '/body/Group 2.svg' : '/body/Group 1.svg'}
-        className="w-[400px] h-[550px] bg-softWhite rounded-lg p-5"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1 }}
-      />
-
+    <div className="relative w-full h-80 max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl rounded-3xl shadow-lg overflow-hidden cursor-pointer">
       <motion.div
-        onClick={toggleImage}
-        className="absolute top-5 right-5 cursor-pointer bg-midnightBlack rounded-full p-2.5"
-        animate={{
-          rotate: rotating ? 360 : 0,
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 260,
-          damping: 20,
-          duration: 5,
-        }}
+        className="absolute inset-0 w-full h-full"
+        initial={false}
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
+        style={{ transformStyle: 'preserve-3d' }}
       >
-        <FaSyncAlt className="text-xl text-sunshineYellow" />
+        {/* Front side */}
+        <div
+          className={`absolute inset-0 w-full h-full backface-hidden ${isFlipped ? 'hidden' : ''}`}
+          style={{ transform: 'rotateY(0deg)' }}
+        >
+          {frontContent}
+        </div>
+
+        {/* Back side */}
+        <div
+          className={`absolute inset-0 w-full h-full backface-hidden ${isFlipped ? '' : 'hidden'}`}
+          style={{ transform: 'rotateY(180deg)' }}
+        >
+          {backContent}
+        </div>
       </motion.div>
+
+      {/* Flip button */}
+      <button
+        onClick={handleFlip}
+        className="absolute top-2 right-2 z-10 bg-white bg-opacity-70 hover:bg-opacity-100 rounded-full p-2 shadow-md transition-all duration-300 ease-in-out"
+        aria-label={isFlipped ? 'Flip card back' : 'Flip card'}
+      >
+        <FaSyncAlt size={20} className="text-gray-800" />
+      </button>
+    </div>
+  );
+};
+
+// HumanAnatomy component
+const HumanAnatomy: React.FC = () => {
+  const frontContent = (
+    <motion.img
+      src="/body/Group 1.svg"
+      className="w-full h-full object-cover rounded-lg"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1 }}
+      style={{ objectFit: 'contain' }}
+    />
+  );
+
+  const backContent = (
+    <motion.img
+      src="/body/Group 2.svg"
+      className="w-full h-full object-cover rounded-lg"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1 }}
+      style={{ objectFit: 'contain', transform: 'rotateY(180deg)' }}
+    />
+  );
+
+  return (
+    <div className="flex flex-col justify-center items-center px-4 py-2">
+      {/* Heading */}
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-2xl font-bold text-midnightBlack text-center mb-2"
+      >
+        Know your muscle
+      </motion.h2>
+
+      {/* Flip Card */}
+      <FlipCard frontContent={frontContent} backContent={backContent} />
     </div>
   );
 };
