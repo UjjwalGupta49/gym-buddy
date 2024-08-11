@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Hero, WorkoutView } from "@/components";
+import { Hero, WorkoutView, Human } from "@/components";
 
 const Home: React.FC = () => {
   useEffect(() => {
@@ -23,6 +23,7 @@ const Home: React.FC = () => {
     <div>
       <Hero />
       <WorkoutView />
+      <Human />
     </div>
   );
 };
