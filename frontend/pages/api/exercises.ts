@@ -35,20 +35,23 @@ const exerciseSchema = new Schema<IExercise>({
 const Exercise =
   models.Exercise || model<IExercise>("Exercise", exerciseSchema, "gymbuddy");
 
-// Connection pooling logic to reuse the database connection
+// Global variable to maintain a single MongoDB connection across requests
+let mongoConnection: typeof mongoose | null = null;
+
 async function connectToDatabase() {
-  if (mongoose.connection.readyState >= 1) {
-    return; // Already connected
+  if (mongoConnection && mongoose.connection.readyState >= 1) {
+    return mongoConnection; // Use existing connection
   }
 
   const mongoUri = process.env.MONGODB_URI || "mongodb+srv://navalbihani15:Ab4hM7uHrMxRNFyG@cluster0.fzkiqho.mongodb.net/gymbuddy?retryWrites=true&w=majority&appName=Cluster0";
 
   try {
-    await mongoose.connect(mongoUri, {
+    mongoConnection = await mongoose.connect(mongoUri, {
       bufferCommands: false,
       maxPoolSize: 10, // Use a connection pool to limit open connections
     });
     console.log("Connected to MongoDB");
+    return mongoConnection;
   } catch (error) {
     console.error("Database connection error:", error);
     throw new Error("Could not connect to the database");
