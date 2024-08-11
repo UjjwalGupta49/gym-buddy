@@ -17,7 +17,7 @@ const HeroMobile: React.FC = () => {
   const handleTabChange = (key: string | number) => {
     const selectedKey = key as string;
     const selectionMap: { [key: string]: string[] } = {
-      "back & bicep": ["BICEP", "ARMS"],
+      "back & bicep": ["BICEP", "BACK"],
       "chest & tricep": ["TRICEP", "CHEST"],
       "legs & shoulder": ["CALVES", "HAMSTRINGS", "SHOULDER"],
     };
@@ -45,18 +45,18 @@ const HeroMobile: React.FC = () => {
         <div className="flex justify-between items-center w-full px-4 mb-4">
           <div className="flex items-center">
             <Avatar
-              src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+              src="/logo.svg"
               className="w-8 h-8 mr-2"
             />
-            <h1 className="text-base font-semibold text-midnightBlack">
+            <h1 className=" font-bold text-midnightBlack text-xl">
               Gym Buddy
             </h1>
           </div>
           <Button
             radius="full"
-            className="bg-coralRed hover:bg-coralRed text-softWhite text-sm px-4 py-2 ml-auto"
+            className="bg-coralRed hover:bg-coralRed text-softWhite text-sm px-4 py-2 ml-auto font-bold"
           >
-            Get Started
+            Contact US
           </Button>
         </div>
 
@@ -66,23 +66,23 @@ const HeroMobile: React.FC = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-xl font-bold text-midnightBlack text-center mb-0"
+            className="text-l font-bold text-midnightBlack text-center mb-0"
           >
-            Daare hai
+            Your Friendly 
           </motion.h2>
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-2xl font-bold text-midnightBlack text-center mb-4"
+            className="text-3xl font-bold text-midnightBlack text-center mb-4"
           >
-            Gym kare hai
+            Gym Buddy
           </motion.h2>
         </div>
 
         {/* Subheading */}
-        <p className="text-sm text-center text-midnightBlack opacity-70 mb-4 w-full h-fit mx-auto">
-          Meet Product. Your AI-powered workspace for seamless collaboration.
+        <p className="text-sm text-center text-midnightBlack opacity-70 mb-4 w-full h-fit mx-auto ">
+         What would you like to do at gym today ?
         </p>
 
         {/* Tabs Component */}
@@ -112,7 +112,7 @@ const HeroDesktop: React.FC = () => {
   const handleTabChange = (key: string | number) => {
     const selectedKey = key as string;
     const selectionMap: { [key: string]: string[] } = {
-      "back & bicep": ["BICEP", "ARMS"],
+      "back & bicep": ["BICEP", "BACK"],
       "chest & tricep": ["TRICEP", "CHEST"],
       "legs & shoulder": ["CALVES", "HAMSTRINGS", "SHOULDER"],
     };
