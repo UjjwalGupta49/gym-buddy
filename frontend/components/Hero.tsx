@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import Head from "next/head";
 import {
   Avatar,
   Button,
@@ -41,9 +41,9 @@ const HeroMobile: React.FC = () => {
         {/* Right Bottom Gradient */}
         <div className="absolute top-0 right-0 w-full h-[50%] bg-gradient-to-b from-coralRed/30 via-coralRed/10 to-transparent"></div>
       </div>
-      <head>
+      <Head>
       <AdSense pId="ca-pub-7654089305224857"></AdSense>
-       </head>
+       </Head>
       
 
       {/* Main Scene Elements */}
