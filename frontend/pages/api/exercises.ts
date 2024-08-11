@@ -43,7 +43,7 @@ async function connectToDatabase() {
     return mongoConnection; // Use existing connection
   }
 
-  const mongoUri = process.env.MONGODB_URI || "mongodb+srv://navalbihani15:Ab4hM7uHrMxRNFyG@cluster0.fzkiqho.mongodb.net/gymbuddy?retryWrites=true&w=majority&appName=Cluster0";
+  const mongoUri = process.env.MONGODB_URI || "mongodb+srv://ujjwalg056:kzrH8e4XjZ18x1qR@cluster0.trja7.mongodb.net/gymbuddy";
 
   try {
     mongoConnection = await mongoose.connect(mongoUri, {
