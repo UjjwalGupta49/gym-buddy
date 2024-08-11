@@ -49,7 +49,7 @@ const FlipCard: React.FC<{ frontContent: React.ReactNode; backContent: React.Rea
 };
 
 // HumanAnatomy component
-const HumanAnatomy: React.FC = () => {
+const Human: React.FC = () => {
   const frontContent = (
     <motion.img
       src="/body/Group 1.svg"
@@ -90,4 +90,4 @@ const HumanAnatomy: React.FC = () => {
   );
 };
 
-export default HumanAnatomy;
+export default Human;
