@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import {
   Avatar,
   Button,
@@ -10,6 +11,7 @@ import {
 } from "@nextui-org/react";
 import { motion } from "framer-motion";
 import { useGlobalState } from "@/context/GlobalStateProvider";
+import AdSense from "./AdSense";
 
 const HeroMobile: React.FC = () => {
   const { items, setItems } = useGlobalState(); // Use the global state
@@ -30,6 +32,7 @@ const HeroMobile: React.FC = () => {
   }, [items]);
 
   return (
+  
     <div className="relative bg-softWhite py-8 px-4 flex flex-col items-center justify-start w-full max-w-md h-auto">
       {/* Background Gradients */}
       <div className="absolute inset-0 pointer-events-none">
@@ -38,6 +41,10 @@ const HeroMobile: React.FC = () => {
         {/* Right Bottom Gradient */}
         <div className="absolute top-0 right-0 w-full h-[50%] bg-gradient-to-b from-coralRed/30 via-coralRed/10 to-transparent"></div>
       </div>
+      <head>
+      <AdSense pId="ca-pub-7654089305224857"></AdSense>
+       </head>
+      
 
       {/* Main Scene Elements */}
       <div className="relative z-10 flex flex-col items-center justify-start w-full h-auto">
