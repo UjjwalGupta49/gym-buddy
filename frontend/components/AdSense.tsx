@@ -1,8 +1,6 @@
 import Script from 'next/script';
 import react from 'react';
-type AdSenseTypes={
-      pId:String;
-}
+
 
 const AdSense = ({pId}:AdSenseTypes)=>{
   return (

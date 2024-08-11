@@ -42,7 +42,7 @@ const HeroMobile: React.FC = () => {
         <div className="absolute top-0 right-0 w-full h-[50%] bg-gradient-to-b from-coralRed/30 via-coralRed/10 to-transparent"></div>
       </div>
       <Head>
-      <AdSense pId="ca-pub-7654089305224857"></AdSense>
+      <AdSense ></AdSense>
        </Head>
       
 
