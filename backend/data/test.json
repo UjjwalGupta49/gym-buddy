@@ -236,7 +236,7 @@
   },
   "PushUp": {
     "Name": "Push Up",
-    "TargetGroup": ["CHEST", "TRICEP", "SHOULDER"],
+    "TargetGroup": ["CHEST", "TRICEP", "SHOULDER","CORE"],
     "GIF": "https://menspower.nl/wp-content/uploads/2018/05/push-up.gif",
     "Description": "basic bodyweight exercise for chest and triceps",
     "SetReps": {
@@ -301,7 +301,7 @@
   },
   "PullUp": {
     "Name": "Pull Up",
-    "TargetGroup": ["BACK", "BICEP", "SHOULDER"],
+    "TargetGroup": ["BACK", "BICEP", "SHOULDER","CORE"],
     "GIF": "https://menspower.nl/wp-content/uploads/2018/04/chin-up.gif",
     "Description": "upar kheencho full power",
     "SetReps": {
@@ -544,6 +544,19 @@
         "Min": 8,
         "Max": 12
       }
+    }
+  },
+  "ABS":{
+    "Name": "ABS",
+    "TargetGroup":["CORE"],
+    "GIF":,
+    "Description": "works the rectus abdominis",
+    "SetReps":{
+      "Sets":3,
+      "Reps":{
+        "Min":10,
+        "Max":15
+        }
     }
   }
 

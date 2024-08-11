@@ -17,7 +17,7 @@ const HeroMobile: React.FC = () => {
   const handleTabChange = (key: string | number) => {
     const selectedKey = key as string;
     const selectionMap: { [key: string]: string[] } = {
-      "back & bicep": ["BICEP", "ARMS"],
+      "back & bicep": ["BICEP", "BACK"],
       "chest & tricep": ["TRICEP", "CHEST"],
       "legs & shoulder": ["CALVES", "HAMSTRINGS", "SHOULDER"],
     };
@@ -112,7 +112,7 @@ const HeroDesktop: React.FC = () => {
   const handleTabChange = (key: string | number) => {
     const selectedKey = key as string;
     const selectionMap: { [key: string]: string[] } = {
-      "back & bicep": ["BICEP", "ARMS"],
+      "back & bicep": ["BICEP", "BACK"],
       "chest & tricep": ["TRICEP", "CHEST"],
       "legs & shoulder": ["CALVES", "HAMSTRINGS", "SHOULDER"],
     };
