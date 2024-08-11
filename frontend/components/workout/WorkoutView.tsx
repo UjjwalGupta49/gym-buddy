@@ -120,25 +120,27 @@ const WorkoutViewMobile: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    const fetchWithRetry = async (url: string, retries: number = 3) => {
-      try {
-        const response = await fetch(url);
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+    const fetchWithRetry = async (url: string, retries: number = 3): Promise<WorkoutsResponse> => {
+        try {
+          const response = await fetch(url);
+      
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+      
+          const data: WorkoutsResponse = await response.json();
+          return data;
+        } catch (error) {
+          if (retries > 0) {
+            console.warn("Retrying API call:", error);
+            return await fetchWithRetry(url, retries - 1);
+          } else {
+            console.error("Failed after retries:", error);
+            throw error;
+          }
         }
-
-        return await response.json();
-      } catch (error) {
-        if (retries > 0) {
-          console.warn("Retrying API call:", error);
-          return await fetchWithRetry(url, retries - 1);
-        } else {
-          console.error("Failed after retries:", error);
-          throw error;
-        }
-      }
-    };
+      };
+      
 
     const fetchWorkouts = async () => {
       setLoading(true);
