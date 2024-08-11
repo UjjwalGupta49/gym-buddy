@@ -38,10 +38,12 @@ async function connectToDatabase() {
   if (mongoose.connection.readyState >= 1) {
     return; // Already connected
   }
+
+  const mongoUri = process.env.MONGODB_URI || "mongodb+srv://navalbihani15:Ab4hM7uHrMxRNFyG@cluster0.fzkiqho.mongodb.net/gymbuddy?retryWrites=true&w=majority&appName=Cluster0";
+
   try {
-    await mongoose.connect(
-      "mongodb+srv://navalbihani15:Ab4hM7uHrMxRNFyG@cluster0.fzkiqho.mongodb.net/gymbuddy?retryWrites=true&w=majority&appName=Cluster0"
-    );
+    await mongoose.connect(mongoUri);
+    console.log("Connected to MongoDB");
   } catch (error) {
     console.error("Database connection error:", error);
     throw new Error("Could not connect to the database");
@@ -55,11 +57,12 @@ export default async function handler(
   try {
     await connectToDatabase();
 
-    // Explicitly type the result of the find().lean() operation
-    const exercises = await Exercise.find({}).lean<IExercise[]>();
+    // Explicitly cast the result to IExercise[]
+    const exercises = await Exercise.find({}).lean().exec() as IExercise[];
 
     res.status(200).json(exercises);
   } catch (error) {
-    res.status(500).json({ message: (error as Error).message });
+    console.error("Error fetching exercises:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 }
