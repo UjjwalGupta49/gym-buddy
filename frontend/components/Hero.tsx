@@ -9,6 +9,7 @@ import {
   Tab,
 } from "@nextui-org/react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { useGlobalState } from "@/context/GlobalStateProvider";
 
 const HeroMobile: React.FC = () => {
@@ -44,20 +45,17 @@ const HeroMobile: React.FC = () => {
         {/* Top Section: Avatar, Gym Buddy, and Get Started Button */}
         <div className="flex justify-between items-center w-full px-4 mb-4">
           <div className="flex items-center">
-            <Avatar
-              src="/logo.svg"
-              className="w-8 h-8 mr-2"
-            />
-            <h1 className=" font-bold text-midnightBlack text-xl">
-              Gym Buddy
-            </h1>
+            <Avatar src="/logo.svg" className="w-8 h-8 mr-2" />
+            <h1 className=" font-bold text-midnightBlack text-xl">Gym Buddy</h1>
           </div>
-          <Button
-            radius="full"
-            className="bg-coralRed hover:bg-coralRed text-softWhite text-sm px-4 py-2 ml-auto font-bold"
-          >
-            Contact Us
-          </Button>
+          <Link href="mailto:navalbihani2004@gmail.com">
+            <Button
+              radius="full"
+              className="bg-coralRed hover:bg-coralRed text-softWhite text-sm px-4 py-2 ml-auto font-bold"
+            >
+              Contact Us
+            </Button>
+          </Link>
         </div>
 
         {/* Main Heading */}
@@ -68,7 +66,7 @@ const HeroMobile: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-l font-bold text-midnightBlack text-center mb-0"
           >
-            Your Friendly 
+            Your Friendly
           </motion.h2>
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
@@ -82,7 +80,7 @@ const HeroMobile: React.FC = () => {
 
         {/* Subheading */}
         <p className="text-sm text-center text-midnightBlack opacity-70 mb-4 w-full h-fit mx-auto ">
-         What would you like to do at gym today ?
+          What would you like to do at gym today ?
         </p>
 
         {/* Tabs Component */}
