@@ -11,7 +11,7 @@ const GlobalStateContext = createContext<GlobalStateType | undefined>(undefined)
 
 // Create the provider component
 const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
-  const [items, setItems] = useState<string[]>(["BICEP", "ARMS"]);
+  const [items, setItems] = useState<string[]>(["BICEP", "BACK"]);
 
   return (
     <GlobalStateContext.Provider value={{ items, setItems }}>

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaSyncAlt } from 'react-icons/fa';
+import { Card, CardBody, Chip, Image } from "@nextui-org/react";
+
 
 // FlipCard component
 const FlipCard: React.FC<{ frontContent: React.ReactNode; backContent: React.ReactNode }> = ({ frontContent, backContent }) => {
@@ -11,7 +13,8 @@ const FlipCard: React.FC<{ frontContent: React.ReactNode; backContent: React.Rea
   };
 
   return (
-    <div className="relative w-full h-80 max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl rounded-3xl shadow-lg overflow-hidden cursor-pointer">
+    <Card className="relative rounded-lg w-full h-80 max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl shadow-lg overflow-hidden cursor-pointer">
+       <CardBody>
       <motion.div
         className="absolute inset-0 w-full h-full"
         initial={false}
@@ -19,6 +22,7 @@ const FlipCard: React.FC<{ frontContent: React.ReactNode; backContent: React.Rea
         transition={{ duration: 0.6, ease: 'easeInOut' }}
         style={{ transformStyle: 'preserve-3d' }}
       >
+       
         {/* Front side */}
         <div
           className={`absolute inset-0 w-full h-full backface-hidden ${isFlipped ? 'hidden' : ''}`}
@@ -44,7 +48,8 @@ const FlipCard: React.FC<{ frontContent: React.ReactNode; backContent: React.Rea
       >
         <FaSyncAlt size={20} className="text-gray-800" />
       </button>
-    </div>
+      </CardBody>
+    </Card>
   );
 };
 

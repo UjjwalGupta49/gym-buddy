@@ -56,7 +56,7 @@ const HeroMobile: React.FC = () => {
             radius="full"
             className="bg-coralRed hover:bg-coralRed text-softWhite text-sm px-4 py-2 ml-auto font-bold"
           >
-            Contact US
+            Contact Us
           </Button>
         </div>
 

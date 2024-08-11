@@ -43,7 +43,12 @@ async function connectToDatabase() {
     return mongoConnection; // Use existing connection
   }
 
-  const mongoUri = process.env.MONGODB_URI || "mongodb+srv://ujjwalg056:kzrH8e4XjZ18x1qR@cluster0.trja7.mongodb.net/gymbuddy";
+  const mongoUri = process.env.MONGODB_URI;
+
+  if (mongoUri == null) { // This checks for both undefined and null
+    console.error("MONGODB_URI is not set in the environment variables.");
+    throw new Error("MONGODB_URI is not set in the environment variables.");
+  }
 
   try {
     mongoConnection = await mongoose.connect(mongoUri, {
