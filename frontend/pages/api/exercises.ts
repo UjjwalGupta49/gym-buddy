@@ -99,7 +99,10 @@ export default async function handler(
   res: NextApiResponse<IExercise[] | { message: string }>
 ) {
   try {
+    
     const exercises = await fetchWithRetry(3, 500); // 3 retries, starting with 500ms delay
+    console.log("exercises: ")
+    console.log(exercises)
     res.status(200).json(exercises);
   } catch (error) {
     console.error("Error fetching exercises:", error);
